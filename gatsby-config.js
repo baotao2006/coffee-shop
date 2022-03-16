@@ -1,5 +1,5 @@
 module.exports = {
   siteMetadata: {
-    title: 'The Coffee Blog'
+    title: '咖啡博客'
   }
 };
