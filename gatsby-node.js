@@ -13,11 +13,15 @@ exports.onCreateNode = function({ node, getNode, actions }) {
 };
 exports.createPages = async function({ graphql, actions }) {
   const { createPage } = actions;
+
   const result = await graphql(`
     query {
       allMarkdownRemark {
         edges {
           node {
+            frontmatter {
+              contentKey
+            }
             fields {
               slug
             }
@@ -26,7 +30,11 @@ exports.createPages = async function({ graphql, actions }) {
       }
     }
   `);
-  result.data.allMarkdownRemark.edges
+
+  const posts = result.data.allMarkdownRemark.edges
+    .filter(edge => edge.node.frontmatter.contentKey === 'blog');
+
+  posts
     .forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
@@ -38,7 +46,6 @@ exports.createPages = async function({ graphql, actions }) {
       });
     });
 
-  const posts = result.data.allMarkdownRemark.edges;
   const pageSize = 5;
   const pageCount = Math.ceil(posts.length / pageSize);
   const templatePath = path.resolve('src/templates/blog-list.js');
@@ -58,5 +65,4 @@ exports.createPages = async function({ graphql, actions }) {
       }
     });
   }
-
 };
