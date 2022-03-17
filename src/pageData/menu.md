@@ -27,4 +27,9 @@ categories:
       - name: 热可可
         description: 巧克力糖浆蒸牛奶
         price: $1.49
+  - name: 糕点
+    items:
+      - name: 蓝莓松饼
+        description: 用农场新鲜蓝莓制成
+        price: $3.99
 ---
