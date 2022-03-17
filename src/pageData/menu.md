@@ -1,4 +1,5 @@
 ---
+contentKey: menu
 title: 咖啡和面包菜单
 categories:
   - name: 冰镇饮料

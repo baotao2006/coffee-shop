@@ -9,6 +9,7 @@ export default function Layout({ children }) {
         <div id={styles.inner}>
           <h1><Link to="/">尼欧的咖啡店</Link></h1>
           <Link to="/blog">博客</Link>
+          <Link to="/menu">菜单</Link>
         </div>
       </header>
       <main id={styles.main}>
